@@ -17,7 +17,7 @@ function App() {
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
   const [userAnswer, setUserAnswer] = useState<AnswerObject[]>([]);
-  const [score, setScore] = useState(0);
+  // const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
   console.log(questions);
 

@@ -17,7 +17,7 @@ function App() {
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
   const [userAnswer, setUserAnswer] = useState<AnswerObject[]>([]);
-  // const [score, setScore] = useState(0);
+  const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
   console.log(questions);
 
@@ -36,28 +36,30 @@ function App() {
     setNumber(0);
     setLoading(false);
   };
+  console.log(score);
+  
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if(!gameOver){
+    if (!gameOver) {
       //users answer
       const answer = e.currentTarget.value;
       //check answer
       const correct = questions[number].correct_answer === answer;
-      if(correct){
+      if (correct) {
         setScore(prev => prev + 1)
       }
       //save answers
-      const answerObject ={
+      const answerObject = {
         question: questions[number].question,
         answer: answer,
         correct: correct,
         correctAnswer: questions[number].correct_answer
       }
-      setUserAnswer((prev)=> [...prev, answerObject])
+      setUserAnswer((prev) => [...prev, answerObject])
     }
   };
 
-  const nextQuestion = () => {};
+  const nextQuestion = () => { };
 
   return (
     <div className="App">
@@ -83,11 +85,11 @@ function App() {
       {!gameOver &&
         !loading &&
         userAnswer.length === number + 1 &&
-        number !== TOTAL_QUESTIONS -1 ?(
-      <button className="next" onClick={nextQuestion}>
-        Next Question
-      </button>
-        ):null}
+        number !== TOTAL_QUESTIONS - 1 ? (
+          <button className="next" onClick={nextQuestion}>
+            Next Question
+          </button>
+        ) : null}
     </div>
   );
 }
